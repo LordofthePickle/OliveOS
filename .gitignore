@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# JetBrains IDEs
+.idea/
+
+# Generated build directories
+/build/
+/cmake-build-*/
+
+# Compiler output
+*.o
+*.d
+*.a
+*.elf
+
+# Bootable images
+*.iso
+*.img
