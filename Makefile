@@ -60,7 +60,7 @@ SOURCES := $(shell find kernel/src kernel/arch/x86_64 -type f -name '*.cpp' | so
 OBJECTS := $(patsubst %.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
 DEPENDENCIES := $(OBJECTS:.o=.d)
 
-.PHONY: all clean iso run
+.PHONY: all clean iso run run-serial
 
 all: $(KERNEL)
 
@@ -82,6 +82,18 @@ run: $(ISO)
 		-m 256M \
 		-drive if=pflash,unit=0,format=raw,file=$(OVMF),readonly=on \
 		-cdrom $(ISO) \
+		-no-reboot \
+		-no-shutdown \
+		-serial stdio
+
+run-serial: $(ISO)
+	$(QEMU) \
+		-M q35 \
+		-m 256M \
+		-drive if=pflash,unit=0,format=raw,file=$(OVMF),readonly=on \
+		-cdrom $(ISO) \
+		-display none \
+		-serial stdio \
 		-no-reboot \
 		-no-shutdown
 
