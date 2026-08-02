@@ -1,8 +1,8 @@
 #include <limine.h>
 
 
-#include <oliveos/framebuffer.hpp>
-#include <oliveos/text.hpp>
+#include <oliveos/graphics/framebuffer.hpp>
+#include <oliveos/graphics/text.hpp>
 #include <oliveos/serial.hpp>
 
 using namespace oliveos;
@@ -86,6 +86,17 @@ extern "C" void kernel_main() {
         test_color);
 
     framebuffer::clear(*framebuffer, default_color);
+
+
+    text::draw_character(*framebuffer, 'B', 100, 100, test_color, 20);
+
+    text::draw_character(*framebuffer, 'a', 300, 100, test_color, 20);
+
+    text::draw_character(*framebuffer,' ', 500, 100, test_color, 20);
+
+    text::draw_character(*framebuffer, '3', 700, 100, test_color, 20);
+
+    text::draw_string(*framebuffer, "Hello World!\nI love Gorbie!", 100, 300, test_color, 2);
 
     halt_forever();
 }

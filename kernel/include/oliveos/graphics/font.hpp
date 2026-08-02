@@ -9,4 +9,7 @@ namespace oliveos::font {
 
     const Glyph& glyph_for(char character);
 
+    inline constexpr uint8_t glyph_width = 8;
+    inline constexpr uint8_t glyph_height = 8;
+
 }

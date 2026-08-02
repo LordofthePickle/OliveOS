@@ -1,4 +1,4 @@
-#include <oliveos/framebuffer.hpp>
+#include <oliveos/graphics/framebuffer.hpp>
 
 namespace oliveos::framebuffer {
     namespace {

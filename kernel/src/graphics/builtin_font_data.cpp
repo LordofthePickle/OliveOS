@@ -1,8 +1,7 @@
-#include <oliveos/font.hpp>
+#include "builtin_font_data.hpp"
 
-namespace oliveos::font {
-
-  constexpr Glyph uppercase_letters[26] = {
+namespace oliveos::font::builtin {
+    const Glyph uppercase_letters[26] = {
     // A
     {{0b00011000, 0b00100100, 0b01000010, 0b01000010,
       0b01111110, 0b01000010, 0b01000010, 0b00000000}},
@@ -108,7 +107,7 @@ namespace oliveos::font {
       0b00100000, 0b01000000, 0b01111110, 0b00000000}}
   };
 
-  constexpr Glyph space_glyph = {{
+  const Glyph space_glyph = {{
     0b00000000,
     0b00000000,
     0b00000000,
@@ -119,7 +118,7 @@ namespace oliveos::font {
     0b00000000
   }};
 
-  constexpr Glyph unknown_glyph = {{
+  const Glyph unknown_glyph = {{
     0b00111100,
     0b01000010,
     0b00000010,
@@ -129,25 +128,4 @@ namespace oliveos::font {
     0b00010000,
     0b00000000
   }};
-
-  inline constexpr uint8_t glyph_width = 8;
-  inline constexpr uint8_t glyph_height = 8;
-
-  const Glyph& glyph_for(const char character) {
-    if (character >= 'A' && character <= 'Z') {
-      return uppercase_letters[character - 'A'];
-    }
-
-    if (character >= 'a' && character <= 'z') {
-      return uppercase_letters[character - 'a']; //TODO: Add lower case
-    }
-
-    if (character == ' ') {
-      return space_glyph;
-    }
-
-    return unknown_glyph;
-  }
-
-
 }
