@@ -49,8 +49,8 @@ namespace oliveos::text {
         uint64_t cursor_x = x;
         uint64_t cursor_y = y;
         uint64_t index = 0;
-        const uint64_t hor_advance = font::glyph_width * scale + 1;
-        const uint64_t ver_advance   = font::glyph_height * scale + 1;
+        const uint64_t hor_advance = (font::glyph_width + 1) * scale;
+        const uint64_t ver_advance   = (font::glyph_height + 1) * scale;
 
         if (text == nullptr || text[0] == '\0' || scale == 0) {
             return;
